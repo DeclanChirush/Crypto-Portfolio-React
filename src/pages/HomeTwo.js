@@ -10,6 +10,7 @@ import CurrencyCalculationTwo from "../components/currency-calculations/Currency
 import HeroSliderTwo from "../containers/hero-sliders/HeroSliderTwo";
 import LayoutTwo from "../layouts/LayoutTwo";
 import Introduction from "../components/introdution/Introduction";
+import MarketTable from "../containers/market-tables/MarketTable";
 
 const HomeTwo = () => {
     return (
@@ -28,8 +29,10 @@ const HomeTwo = () => {
                 <Introduction/>
                 {/* how works */}
                 <HowWorks/>
+
+                <MarketTable/>
                 {/* live chart */}
-                <LiveChartTwo/>
+                {/*<LiveChartTwo/>*/}
                 {/*/!* work process *!/*/}
                 {/*<WorkProcess/>*/}
                 {/*/!* counter up *!/*/}
