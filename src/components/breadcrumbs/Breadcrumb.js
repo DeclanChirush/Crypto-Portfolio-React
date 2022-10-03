@@ -9,7 +9,7 @@ const Breadcrumb = ({ title }) => {
       className="ht__bradcaump__area"
       style={{
         background: `rgba(0, 0, 0, 0) url(${process.env.PUBLIC_URL +
-          "/images/bg/7.jpg"}) repeat scroll center center/105% 100%`
+          "/images/bg/12.jpg"}) repeat scroll center center/105% 100%`
       }}
     >
       <div className="ht__bradcaump__container">

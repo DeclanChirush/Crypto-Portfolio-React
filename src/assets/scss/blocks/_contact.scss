@@ -63,7 +63,7 @@
     margin-top: 30px;
     button {
         height: 40px;
-        padding: 0 40px;
+        padding: 0 200px;
 
         transition: 0.5s;
         text-transform: uppercase;
@@ -79,8 +79,9 @@
 }
 
 .dg__contact__wrapper {
-    padding-right: 70px;
-    padding-left: 70px;
+    padding-top: 50px;
+    padding-left: 20%;
+    padding-bottom: 50px;
 }
 
 .google__map {

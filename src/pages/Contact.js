@@ -8,10 +8,10 @@ const Contact = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Howard | Contact</title>
+        <title>CRYPTO FORETELLER | Contact</title>
         <meta
           name="description"
-          content="Contact page of React JS Crypto Currency Template."
+          content="Contact page of CRYPTO FORETELLER."
         />
       </MetaTags>
       <LayoutTwo theme="white">
@@ -27,7 +27,7 @@ const Contact = () => {
                     src={process.env.PUBLIC_URL + "/images/about/contact.png"}
                     alt="conatct images"
                   />
-                  <h2>Get HOWARD where you need !</h2>
+                  <h2>Get In Touch With Us !</h2>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
@@ -45,12 +45,14 @@ const Contact = () => {
           <div className="container-fluid">
             <div className="row align-items-center">
               <div className="col-lg-6 col-md-12 col-12">
-                <div className="google__map">
-                  {/* contact map */}
-                  <ContactMap latitude="47.444" longitude="-122.176" />
+                <div className="thumb">
+                  <img
+                      src={process.env.PUBLIC_URL + "/images/about/contact-image.png"}
+                      alt="computer images"
+                  />
                 </div>
               </div>
-              <div className="col-lg-6 col-md-12 col-12 sm__mt--40 md__mt--40">
+              <div className="col-lg 6 col-md-12 col-12 sm__mt--40 md__mt--40">
                 <div className="dg__contact__wrapper">
                   <form className="contact-form">
                     <div className="single-contact-form">
