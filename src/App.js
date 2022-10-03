@@ -18,6 +18,7 @@ import Wallet from "./pages/Wallet";
 import LoginRegister from "./pages/LoginRegister";
 import NotFound from "./pages/NotFound";
 import AboutBitcoin from "./pages/AboutBitcoin";
+import Foreteller from "./pages/Foreteller";
 
 function App() {
   return (
@@ -52,6 +53,10 @@ function App() {
           <Route
             path={`${process.env.PUBLIC_URL + "/about-bitcoin"}`}
             component={AboutBitcoin}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL + "/foreteller"}`}
+            component={Foreteller}
           />
           <Route
             path={`${process.env.PUBLIC_URL + "/blog"}`}
