@@ -22,7 +22,7 @@ const MarketTable = () => {
     }, []);
 
 
-    return (<div className="market__table bg--white pt--140 pb--120">
+    return (<div className="market__table bg--white pt--140">
         <div className="container">
             <div className="row">
                 <div className="col-lg-12">
