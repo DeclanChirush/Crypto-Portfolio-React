@@ -1,38 +1,45 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Card, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import CurrencyService from "../../services/CurrencyService";
 
 import SectionTitleTwo from "../../components/ui/section-titles/SectionTitleTwo";
 
 const ForetellerCard = () => {
-    // const [cardData, setCardData] = useState([]);
-    //
-    // useEffect(() => {
-    //     async function dataFetch() {
-    //         CurrencyService.getPrediction()
-    //             .then(response => response.data)
-    //             .then((data) => {
-    //                 console.log(data);
-    //                 console.log(dataCards);
-    //             }).catch(error => console.log(error.message));
-    //     }
-    //
-    //     dataFetch();
-    // }, []);
+    const [cardData, setCardData] = useState(dataCards);
+    const [foretellerData, setForetellerData] = useState([]);
 
-    const dataCards = [
+
+    useEffect(() => {
+        async function dataFetch() {
+            CurrencyService.getPrediction()
+                .then(response => response.data)
+                .then(data => data.data)
+                .then((data) => {
+                    setForetellerData(data);
+                }).catch(error => console.log(error.message));
+        }
+
+
+        dataFetch();
+    }, []);
+
+    let dataCards = [
         {
             "name": "BitCoin",
+            "code": "BTC_USD",
             "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png",
             "path": "/foreteller-bitcoin"
         },
         {
             "name": "Ethereum",
+            "code": "ETH_USD",
             "image": "https://yt3.ggpht.com/ytc/AMLnZu8fhtd4JmRi9ALE3-IppCAEuCNPZJG1eBcM9UYU2g=s900-c-k-c0x00ffffff-no-rj",
             "path": "/foreteller-ethereum"
         },
         {
             "name": "PolkaEx",
+            "code": "PKEX_USD",
             "image": "https://icodrops.com/wp-content/uploads/2021/09/IMG_20210929_113644_788.jpg",
             "path": "/foreteller-polkaex"
         },
@@ -53,8 +60,17 @@ const ForetellerCard = () => {
                 <div className='pt-5'>
                     <Row className="g-4 align-items-center justify-content-center">
                         {
-                            dataCards.map((data,idx) => (
-                                <Link to={process.env.PUBLIC_URL + data.path} key={idx}>
+                            dataCards.map((data, idx) => (
+                                <Link
+                                    to={{
+                                        pathname: process.env.PUBLIC_URL + '/foreteller',
+                                        state: {
+                                            name: data.name,
+                                            code: data.code,
+                                            image: data.image
+                                        }
+                                    }}
+                                    key={idx}>
                                     <Card className="mr-2 mt-2 p-2" style={{width: '20rem'}}>
                                         <Card.Img
                                             src={data.image}
