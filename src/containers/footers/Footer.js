@@ -31,11 +31,11 @@ const Footer = ({ theme }) => {
   };
   return (
     <footer
-      className={`footer-area ${theme === "white" ? "footer--2" : "footer--1"}`}
+      className={`footer-area ${theme === "white" ? "footer--1" : "footer--2"}`}
     >
       <div
         className={`dg__footer__container ${
-          theme === "white" ? "bg--white" : "bg__color--2"
+          theme === "white" ? "bg__color--4" : "bg__color--2"
         }`}
       >
         <div className="container">
@@ -155,8 +155,8 @@ const Footer = ({ theme }) => {
             <div className="col-lg-6 col-sm-6 col-12">
               <div className="copyright__inner">
                 <p className="copyright-text">
-                  &copy; Howard {new Date().getFullYear()} Made with <FaHeart />{" "}
-                  by HasThemes
+                  &copy; CRYPTO FORETELLER {new Date().getFullYear()} Made with <FaHeart />{" "}
+                  by CRYPTO FORETELLER
                 </p>
               </div>
             </div>
