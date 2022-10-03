@@ -11,6 +11,14 @@ class CurrencyService {
     getPrediction() {
         return axios.get(FLASK_API + '/predict')
     }
+
+    getPredictionByCurrency(currency) {
+        return axios.get(FLASK_API + '/predict/' + currency)
+    }
+
+    getPredictionByCurrencyAction(currency, action) {
+        return axios.get(FLASK_API + '/predict/' + currency + '/' + action)
+    }
 }
 
 export default new CurrencyService();
