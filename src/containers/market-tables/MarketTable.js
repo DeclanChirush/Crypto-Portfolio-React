@@ -15,7 +15,6 @@ const MarketTable = () => {
                 .then((data) => {
                     let newArray = data.slice(0, 5);
                     setMarketData(newArray);
-                    console.log(newArray);
                 }).catch(error => console.log(error.message));
         }
 
