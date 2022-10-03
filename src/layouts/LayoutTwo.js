@@ -11,9 +11,9 @@ const LayoutTwo = ({ children, theme }) => {
       <Header theme={theme} />
       {children}
       {/* brand logo */}
-      <BrandLogoTwo />
+      {/*<BrandLogoTwo />*/}
       {/* newsletter */}
-      <Newsletter />
+      {/*<Newsletter />*/}
       <Footer theme={theme} />
     </Fragment>
   );

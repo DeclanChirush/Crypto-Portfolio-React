@@ -4,7 +4,7 @@
     padding: 138px 0;
     position: relative;
     &::before {
-        background: #f2f4f6 none repeat scroll 0 0;
+        background: #001232 none repeat scroll 0 0;
         content: "";
         height: 100%;
         left: 23%;
@@ -19,13 +19,13 @@
     }
     .content {
         h2 {
-            color: #001232;
+            color: #ffffff;
             font-size: 36px;
             margin-bottom: 20px;
             text-transform: capitalize;
         }
         h6 {
-            color: #001232;
+            color: #ffffff;
             font-size: 18px;
             font-weight: 600;
             line-height: 26px;

@@ -29,22 +29,22 @@ function App() {
             path={`${process.env.PUBLIC_URL + "/"}`}
             component={HomeTwo}
           />
-          {/*<Route*/}
-          {/*  path={`${process.env.PUBLIC_URL + "/home-one"}`}*/}
-          {/*  component={HomeOne}*/}
-          {/*/>*/}
-          {/*<Route*/}
-          {/*  path={`${process.env.PUBLIC_URL + "/home-two"}`}*/}
-          {/*  component={HomeTwo}*/}
-          {/*/>*/}
-          {/*<Route*/}
-          {/*  path={`${process.env.PUBLIC_URL + "/home-three"}`}*/}
-          {/*  component={HomeThree}*/}
-          {/*/>*/}
-          {/*<Route*/}
-          {/*  path={`${process.env.PUBLIC_URL + "/home-four"}`}*/}
-          {/*  component={HomeFour}*/}
-          {/*/>*/}
+          <Route
+            path={`${process.env.PUBLIC_URL + "/home-one"}`}
+            component={HomeOne}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL + "/home-two"}`}
+            component={HomeTwo}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL + "/home-three"}`}
+            component={HomeThree}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL + "/home-four"}`}
+            component={HomeFour}
+          />
           <Route
             path={`${process.env.PUBLIC_URL + "/about"}`}
             component={About}
