@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./helpers/ScrollToTop";
-import HomeOne from "./pages/HomeOne";
+// import HomeOne from "./pages/HomeOne";
 import HomeTwo from "./pages/HomeTwo";
-import HomeThree from "./pages/HomeThree";
-import HomeFour from "./pages/HomeFour";
+// import HomeThree from "./pages/HomeThree";
+// import HomeFour from "./pages/HomeFour";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import BlogRightSidebar from "./pages/BlogRightSidebar";
