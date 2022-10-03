@@ -18,6 +18,14 @@ import Wallet from "./pages/Wallet";
 import LoginRegister from "./pages/LoginRegister";
 import NotFound from "./pages/NotFound";
 import AboutBitcoin from "./pages/AboutBitcoin";
+import AdminDashboardHome from "./pages/AdminDashboardHome";
+import AddNews from "./components/news/AddNews";
+import NewsList from "./components/news/NewsList";
+import EditNews from "./components/news/EditNews";
+import AddCoin from "./components/coins/AddCoin";
+import CoinsList from "./components/coins/CoinsList";
+import EditCoin from "./components/coins/EditCoin";
+
 
 function App() {
   return (
@@ -97,7 +105,44 @@ function App() {
             path={`${process.env.PUBLIC_URL + "/not-found"}`}
             component={NotFound}
           />
+
+          <Route
+              path={`${process.env.PUBLIC_URL + "/add-news"}`}
+              component={AddNews}
+          />
+
+          <Route
+              path={`${process.env.PUBLIC_URL + "/news-list"}`}
+              component={NewsList}
+          />
+
+          <Route
+              path={`${process.env.PUBLIC_URL + "/edit-news"}`}
+              component={EditNews}
+          />
+
+          <Route
+              path={`${process.env.PUBLIC_URL + "/add-coin"}`}
+              component={AddCoin}
+          />
+
+          <Route
+              path={`${process.env.PUBLIC_URL + "/coins-list"}`}
+              component={CoinsList}
+          />
+
+          <Route
+              path={`${process.env.PUBLIC_URL + "/edit-coin"}`}
+              component={EditCoin}
+          />
+
+          <Route
+              path={`${process.env.PUBLIC_URL + "/admin-dashboard"}`}
+              component={AdminDashboardHome}
+          />
+
           <Route exact component={NotFound} />
+
         </Switch>
       </ScrollToTop>
     </Router>
