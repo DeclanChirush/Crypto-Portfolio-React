@@ -8,10 +8,10 @@ const BlogRightSidebar = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Howard | Latest News</title>
+        <title> CODE FORETELLER | Latest News</title>
         <meta
-          name="description"
-          content="Blog page of React JS Crypto Currency Template."
+          name="CODE FORETELLER"
+          content="Blog page of CODE FORETELLER"
         />
       </MetaTags>
       <LayoutTwo theme="white">
