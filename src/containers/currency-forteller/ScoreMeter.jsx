@@ -14,7 +14,7 @@ function ScoreMeter({priceScore, marketCapScore, volumeScore}) {
                                 arcsLength={[0.3, 0.5, 0.2]}
                                 colors={["#ff0015", "#ffd300", "#38ff00"]}
                                 arcWidth={0.3}
-                                percent={(priceScore)}
+                                percent={(priceScore) || 0}
                     />
                     <h4 className='text-white text-center'>Price Score</h4>
                 </div>
@@ -26,7 +26,7 @@ function ScoreMeter({priceScore, marketCapScore, volumeScore}) {
                                 arcsLength={[0.3, 0.5, 0.2]}
                                 colors={["#ff0015", "#ffd300", "#38ff00"]}
                                 arcWidth={0.3}
-                                percent={(marketCapScore)}
+                                percent={(marketCapScore) || 0}
                     />
                     <h4 className='text-white text-center'>Market Cap Score</h4>
                 </div>
@@ -38,7 +38,7 @@ function ScoreMeter({priceScore, marketCapScore, volumeScore}) {
                                 arcsLength={[0.3, 0.5, 0.2]}
                                 colors={["#ff0015", "#ffd300", "#38ff00"]}
                                 arcWidth={0.3}
-                                percent={(volumeScore) / 10}
+                                percent={(volumeScore) / 10 || 0}
                     />
                     <h4 className='text-white text-center'>volume Score</h4>
                 </div>
@@ -50,7 +50,7 @@ function ScoreMeter({priceScore, marketCapScore, volumeScore}) {
                                 arcsLength={[0.3, 0.5, 0.2]}
                                 colors={["#ff0015", "#ffd300", "#38ff00"]}
                                 arcWidth={0.3}
-                                percent={(priceScore + marketCapScore + volumeScore)}
+                                percent={(priceScore + marketCapScore + volumeScore) || 0}
                     />
                     <h4 className='text-white text-center'>Total Score</h4>
                 </div>
