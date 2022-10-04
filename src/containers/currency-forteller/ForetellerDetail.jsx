@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Col, Image, Row, Table} from "react-bootstrap";
+import {Col, Image, Row} from "react-bootstrap";
 import CurrencyService from "../../services/CurrencyService";
 import ScoreMeter from "./ScoreMeter";
 

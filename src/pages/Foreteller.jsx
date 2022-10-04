@@ -1,6 +1,7 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment} from 'react';
 import {useLocation} from "react-router-dom";
 import MetaTags from "react-meta-tags";
+
 import LayoutTwo from "../layouts/LayoutTwo";
 import Breadcrumb from "../components/breadcrumbs/Breadcrumb";
 import ForetellerDetail from "../containers/currency-forteller/ForetellerDetail";
@@ -10,22 +11,6 @@ function Foreteller() {
     const {name} = location.state
     const {code} = location.state
     const {image} = location.state
-    console.log(location)
-
-
-    // const [nameData, setNameData] = useState();
-    // const [codeData, setCodeData] = useState();
-    // const [imageData, setImageData] = useState();
-    //
-    // useEffect(() => {
-    //     async function dataFetch() {
-    //         setNameData(name)
-    //         setCodeData(code)
-    //         setImageData(image)
-    //     }
-    //
-    //     dataFetch();
-    // }, []);
 
     return (
         <Fragment>
@@ -42,7 +27,7 @@ function Foreteller() {
                 <Breadcrumb title="Foreteller"/>
 
                 {/* market table */}
-                <ForetellerDetail title={name} coinImage={image} code={code} />
+                <ForetellerDetail title={name} coinImage={image} code={code}/>
 
             </LayoutTwo>
         </Fragment>
