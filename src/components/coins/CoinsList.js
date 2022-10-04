@@ -1,7 +1,8 @@
 import Navbar from "../dashboard/sidebar/Navbar";
-import {Container, Table} from "react-bootstrap";
-import React,{useState} from "react";
+import {Button, Container, Table} from "react-bootstrap";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import CurrencyDetailsService from "../../services/CurrencyDetailsService";
 
 function CoinsList(props) {
     const divBox = {
@@ -12,8 +13,29 @@ function CoinsList(props) {
     }
 
     let count = 1;
-    const [coinsList, setCoinsList] = useState([]);
+    const [coinsList, setCardData] = useState([]);
 
+    useEffect(() => {
+        async function dataFetch() {
+            await CurrencyDetailsService.getAllCurrency()
+                .then(response => response.data)
+                .then((data) => {
+                    setCardData(data)
+                }).catch(error => console.log(error.message));
+        }
+
+        dataFetch();
+    }, []);
+
+    const handleDelete = async (id) => {
+        await CurrencyDetailsService.deleteCurrencyById(id)
+            .then(response => response.data)
+            .then((data) => {
+                console.log(data)
+            }).catch(error => {
+                console.log(error.message);
+            });
+    }
 
     return (
         <div>
@@ -24,17 +46,18 @@ function CoinsList(props) {
             <Navbar/>
             <div style={divBox}/>
             <Container>
-                <div >
-                    <Link to={`/add-news`} className={'btn btn-success'}>Add New Coin</Link>
+                <div>
+                    <Link to={`/add-coin`} className={'btn btn-success'}>Add New Coin</Link>
                 </div>
                 <div style={divSmallBox}/>
                 <Table striped bordered hover variant='dark'>
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Author</th>
-                        <th>Title</th>
+                        <th>Name</th>
+                        <th>Code</th>
                         <th>Description</th>
+                        <th>Image Path</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -47,22 +70,33 @@ function CoinsList(props) {
                                 <td>{'Data Not Available!'}</td>
                                 <td>{'Data Not Available!'}</td>
                                 <td>{'Data Not Available!'}</td>
+                                <td>{'Data Not Available!'}</td>
+                                <td>{'Data Not Available!'}</td>
+                                <td>{'Data Not Available!'}</td>
                             </tr>
                             :
-                            coinsList.map((coin) => (
-
-                                <tr key={coin.id}>
+                            coinsList.map((coin, key) => (
+                                <tr key={coin._id.$oid}>
                                     <td>{count++}</td>
                                     <td>{coin.name}</td>
                                     <td>{coin.code}</td>
-                                    <td>{coin.imageLink}</td>
+                                    <td>{coin.description}</td>
+                                    <td>{coin.image}</td>
                                     <td>
-                                        <Link to={`/coin-edit/` + coin.id}
+                                        <Link to={{
+                                            pathname: process.env.PUBLIC_URL + '/coin-edit',
+                                            state: {
+                                                coinId: coin._id.$oid,
+                                                coinName: coin.name,
+                                                coinCode: coin.code,
+                                                coinDescription: coin.description,
+                                                coinImagePath: coin.image
+                                            }
+                                        }}
                                               className={'btn btn-primary'}>Edit</Link>
                                     </td>
                                     <td>
-                                        <Link to={`/coin-delete/` + coin.id}
-                                              className={'btn btn-primary'}>Delete</Link>
+                                        <Button className="btn-danger">Delete</Button>
                                     </td>
                                 </tr>
                             ))
