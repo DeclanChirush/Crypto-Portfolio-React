@@ -102,6 +102,7 @@ function AddCoin(props) {
                                         value={description}
                                         onChange={e => setDescription(e.target.value)}
                                         validations={[requiredField]}
+                                        style={{height: "100px"}}
                                         required
                                     />
                                 </div>

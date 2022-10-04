@@ -1,7 +1,8 @@
 import Navbar from "../dashboard/sidebar/Navbar";
-import {Container, Table} from "react-bootstrap";
-import React,{useState} from "react";
+import {Button, Container, Table} from "react-bootstrap";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import NewsService from "../../services/NewsService";
 
 function NewsList(props) {
     const divBox = {
@@ -14,6 +15,27 @@ function NewsList(props) {
     let count = 1;
     const [newsList, setNewsList] = useState([]);
 
+    useEffect(() => {
+        async function dataFetch() {
+            await NewsService.getAllNews()
+                .then(response => response.data)
+                .then((data) => {
+                    setNewsList(data)
+                }).catch(error => console.log(error.message));
+        }
+
+        dataFetch();
+    }, []);
+
+    const handleDelete = async (id) => {
+        await NewsService.deleteNewsById(id)
+            .then(response => response.data)
+            .then((data) => {
+                console.log(data)
+            }).catch(error => {
+                console.log(error.message);
+            });
+    }
 
     return (
         <div>
@@ -35,6 +57,7 @@ function NewsList(props) {
                         <th>Author</th>
                         <th>Title</th>
                         <th>Description</th>
+                        <th>Date</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -47,22 +70,32 @@ function NewsList(props) {
                                 <td>{'Data Not Available!'}</td>
                                 <td>{'Data Not Available!'}</td>
                                 <td>{'Data Not Available!'}</td>
+                                <td>{'Data Not Available!'}</td>
+                                <td>{'Data Not Available!'}</td>
+                                <td>{'Data Not Available!'}</td>
                             </tr>
                             :
-                            newsList.map((news) => (
+                            newsList.map((news, key) => (
 
-                                <tr key={news.id}>
+                                <tr key={news._id.$oid}>
                                     <td>{count++}</td>
                                     <td>{news.author}</td>
                                     <td>{news.title}</td>
                                     <td>{news.description}</td>
-                                    <td>
-                                        <Link to={`/news-edit/` + news.id}
+                                    <td>{news.date.$date}</td>
+                                    <td><Link to={{
+                                        pathname: process.env.PUBLIC_URL + '/edit-news',
+                                        state: {
+                                            newsId: news._id.$oid,
+                                            newsTitle: news.title,
+                                            newsDescription: news.description,
+                                            newsAuthor: news.author
+                                        }
+                                    }}
                                               className={'btn btn-primary'}>Edit</Link>
                                     </td>
                                     <td>
-                                        <Link to={`/news-delete/` + news.id}
-                                              className={'btn btn-primary'}>Delete</Link>
+                                        <Button className="btn-danger">Delete</Button>
                                     </td>
                                 </tr>
                             ))
