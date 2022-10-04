@@ -5,29 +5,29 @@ import * as IoIcons from 'react-icons/io';
 
 export const SidebarData = [
   {
-    title: 'Home',
-    path: '/',
+    title: 'DASHBOARD',
+    path: '/admin-dashboard',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text'
   },
+  // {
+  //   title: 'Add Coin',
+  //   path: '/add-coin',
+  //   icon: <FaIcons.FaCartPlus />,
+  //   cName: 'nav-text'
+  // },
   {
-    title: 'Add Coin',
-    path: '/add-coin',
-    icon: <FaIcons.FaCartPlus />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Coins List',
+    title: 'COINS',
     path: '/coins-list',
     icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
   },
-  {
-    title: 'Edit Coin',
-    path: '/edit-coin',
-    icon: <FaIcons.FaCartPlus />,
-    cName: 'nav-text'
-  },
+  // {
+  //   title: 'Edit Coin',
+  //   path: '/edit-coin',
+  //   icon: <FaIcons.FaCartPlus />,
+  //   cName: 'nav-text'
+  // },
   {
     title: 'News',
     path: '/add-news',

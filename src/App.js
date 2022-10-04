@@ -137,7 +137,7 @@ function App() {
           />
 
           <Route
-              path={`${process.env.PUBLIC_URL + "/edit-coin"}`}
+              path={`${process.env.PUBLIC_URL + "/coin-edit"}`}
               component={EditCoin}
           />
 
