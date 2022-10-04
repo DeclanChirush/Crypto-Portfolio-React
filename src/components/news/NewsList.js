@@ -58,6 +58,7 @@ function NewsList(props) {
                         <th>Title</th>
                         <th>Description</th>
                         <th>Date</th>
+                        <th>Image Link</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -83,11 +84,13 @@ function NewsList(props) {
                                     <td>{news.title}</td>
                                     <td>{news.description}</td>
                                     <td>{news.date.$date}</td>
+                                    <td>{news.image}</td>
                                     <td><Link to={{
                                         pathname: process.env.PUBLIC_URL + '/edit-news',
                                         state: {
                                             newsId: news._id.$oid,
                                             newsTitle: news.title,
+                                            newsImage: news.image,
                                             newsDescription: news.description,
                                             newsAuthor: news.author
                                         }

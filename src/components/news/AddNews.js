@@ -4,6 +4,7 @@ import Navbar from "../dashboard/sidebar/Navbar";
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
+import NewsService from "../../services/NewsService";
 
 // TODO: Validating registration form fields
 const requiredField = data => {
@@ -21,6 +22,7 @@ function AddNews(props) {
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [successful, setSuccessful] = useState(false);
@@ -32,14 +34,19 @@ function AddNews(props) {
     setMessage("");
     setLoading(true);
 
-    // NewsDataService.create({ title, description })
-    //   .then((response) => {
-    //     setMessage(response.data.message);
-    //     setLoading(false);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
+      const data = {
+          "title": title,
+          "description": description,
+          "image":image,
+          "author": author
+      }
+
+      NewsService.createNews(data)
+          .then(response => {
+              setMessage(response.data);
+              setLoading(false);
+          })
+          .catch(error => console.log(error.message));
   };
 
   return (
@@ -86,6 +93,20 @@ function AddNews(props) {
                     </div>
 
                       <div className="form-group">
+                          <label htmlFor="image">Image Link</label>
+                          <Input
+                              type="text"
+                              placeholder="Enter Title"
+                              className="form-control"
+                              name="image"
+                              value={image}
+                              onChange={e => setImage(e.target.value)}
+                              validations={[requiredField]}
+                              required
+                          />
+                      </div>
+
+                      <div className="form-group">
                           <label htmlFor="description">Description</label>
                           <textarea
                               type="text"
@@ -106,7 +127,7 @@ function AddNews(props) {
                         {loading && (
                             <span className="spinner-border spinner-border-sm"> </span>
                         )}
-                        <span>Submit</span>
+                        <span>Add</span>
                       </button>
                     </div>
                   </div>

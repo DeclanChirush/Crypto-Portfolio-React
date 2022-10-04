@@ -10,15 +10,15 @@ const LoginRegister = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Howard | Login</title>
+        <title>CRYPTO FORETELLER | Login</title>
         <meta
           name="description"
-          content="Login page of React JS Crypto Currency Template."
+          content="Login page of CRYPTO FORETELLER"
         />
       </MetaTags>
       <LayoutTwo theme="white">
         {/* breadcrumb */}
-        <Breadcrumb title="LOGIN - REGISTER" />
+        <Breadcrumb title="LOGIN" />
         {/* login register content */}
         <div className="dg__account section-padding--xl">
           <div className="container">
@@ -74,7 +74,6 @@ const LoginRegister = () => {
                           <span>Password</span>
                           <input type="password" />
                         </div>
-                        <button className="account__btn">Register</button>
                       </div>
                     </Tab.Pane>
                   </Tab.Content>

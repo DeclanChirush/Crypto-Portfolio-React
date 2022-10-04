@@ -12,7 +12,7 @@ const AboutBitcoin = () => {
                 <title>Coins</title>
                 <meta
                     name="description"
-                    content="About bitcoin page of React JS Crypto Currency Template."
+                    content="About bitcoin page of CRYPTO FORETELLER"
                 />
             </MetaTags>
             <LayoutTwo theme="white">

@@ -23,6 +23,7 @@ function EditNews(props) {
     const location = useLocation();
     const {newsId} = location.state
     const {newsTitle} = location.state
+    const {newsImage} = location.state
     const {newsDescription} = location.state
     const {newsAuthor} = location.state
 
@@ -30,6 +31,7 @@ function EditNews(props) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [author, setAuthor] = useState("");
+    const [image, setImage] = useState("");
 
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -39,6 +41,7 @@ function EditNews(props) {
         async function dataSet() {
             setId(newsId)
             setTitle(newsTitle)
+            setImage(newsImage)
             setDescription(newsDescription)
             setAuthor(newsAuthor)
         }
@@ -57,7 +60,8 @@ function EditNews(props) {
             "_id":id,
             "title": title,
             "description": description,
-            "author": author
+            "author": author,
+            "image": image
         }
 
         NewsService.updateNews(data)
@@ -106,6 +110,20 @@ function EditNews(props) {
                                         name="title"
                                         value={title}
                                         onChange={e => setTitle(e.target.value)}
+                                        validations={[requiredField]}
+                                        required
+                                    />
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="image">Image Link</label>
+                                    <Input
+                                        type="text"
+                                        placeholder="Enter Title"
+                                        className="form-control"
+                                        name="image"
+                                        value={image}
+                                        onChange={e => setImage(e.target.value)}
                                         validations={[requiredField]}
                                         required
                                     />
