@@ -25,6 +25,7 @@ import EditNews from "./components/news/EditNews";
 import AddCoin from "./components/coins/AddCoin";
 import CoinsList from "./components/coins/CoinsList";
 import EditCoin from "./components/coins/EditCoin";
+import Foreteller from "./pages/Foreteller";
 
 
 function App() {
@@ -60,6 +61,10 @@ function App() {
           <Route
             path={`${process.env.PUBLIC_URL + "/about-bitcoin"}`}
             component={AboutBitcoin}
+          />
+          <Route
+            path={`${process.env.PUBLIC_URL + "/foreteller"}`}
+            component={Foreteller}
           />
           <Route
             path={`${process.env.PUBLIC_URL + "/blog"}`}
