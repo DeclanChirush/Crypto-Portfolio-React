@@ -1,11 +1,12 @@
 import axios from "axios";
+import Connection from "./connection.json"
 
-const FLASK_API = 'http://127.0.0.1:5000/crypto-currency';
+const FLASK_API = Connection.localAddress + '/crypto-currency';
 
 class CurrencyService {
 
     checkPing() {
-        return axios.get(FLASK_API + '/');
+        return axios.get(Connection.localAddress);
     }
 
     getPrediction() {
