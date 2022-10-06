@@ -38,22 +38,22 @@ function App() {
             path={`${process.env.PUBLIC_URL + "/"}`}
             component={HomeTwo}
           />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/home-one"}`}
-            component={HomeOne}
-          />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/home-two"}`}
-            component={HomeTwo}
-          />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/home-three"}`}
-            component={HomeThree}
-          />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/home-four"}`}
-            component={HomeFour}
-          />
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/home-one"}`}*/}
+          {/*  component={HomeOne}*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/home-two"}`}*/}
+          {/*  component={HomeTwo}*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/home-three"}`}*/}
+          {/*  component={HomeThree}*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/home-four"}`}*/}
+          {/*  component={HomeFour}*/}
+          {/*/>*/}
           <Route
             path={`${process.env.PUBLIC_URL + "/about"}`}
             component={About}
@@ -66,42 +66,42 @@ function App() {
             path={`${process.env.PUBLIC_URL + "/foreteller"}`}
             component={Foreteller}
           />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/blog"}`}
-            component={Blog}
-          />
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/blog"}`}*/}
+          {/*  component={Blog}*/}
+          {/*/>*/}
           <Route
             path={`${process.env.PUBLIC_URL + "/news"}`}
             component={BlogRightSidebar}
           />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/blog-post"}`}
-            component={BlogPost}
-          />
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/blog-post"}`}*/}
+          {/*  component={BlogPost}*/}
+          {/*/>*/}
           <Route
             path={`${process.env.PUBLIC_URL + "/contact"}`}
             component={Contact}
           />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/service"}`}
-            component={Service}
-          />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/service-details"}`}
-            component={ServiceDetails}
-          />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/merchants"}`}
-            component={Merchants}
-          />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/team"}`}
-            component={Team}
-          />
-          <Route
-            path={`${process.env.PUBLIC_URL + "/wallet"}`}
-            component={Wallet}
-          />
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/service"}`}*/}
+          {/*  component={Service}*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/service-details"}`}*/}
+          {/*  component={ServiceDetails}*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/merchants"}`}*/}
+          {/*  component={Merchants}*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/team"}`}*/}
+          {/*  component={Team}*/}
+          {/*/>*/}
+          {/*<Route*/}
+          {/*  path={`${process.env.PUBLIC_URL + "/wallet"}`}*/}
+          {/*  component={Wallet}*/}
+          {/*/>*/}
           <Route
             path={`${process.env.PUBLIC_URL + "/login"}`}
             component={LoginRegister}

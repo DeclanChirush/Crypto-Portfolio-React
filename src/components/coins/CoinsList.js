@@ -79,7 +79,7 @@ function CoinsList(props) {
             <div style={divBox}/>
             <Container>
                 <div>
-                    <Link to={`/add-coin`} className={'btn btn-success'}>Add New Coin</Link>
+                    <Link to={`/add-coin`} className={'btn btn-success text-white'}>Add New Coin</Link>
                 </div>
                 <div style={divSmallBox}/>
                 <Table striped bordered hover variant='dark'>

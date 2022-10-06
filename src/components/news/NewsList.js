@@ -84,7 +84,7 @@ function NewsList(props) {
             <div style={divBox}/>
             <Container>
                 <div >
-                    <Link to={`/add-news`} className={'btn btn-success'}>Add a News</Link>
+                    <Link to={`/add-news`} className={'btn btn-success text-white'}>Add a News</Link>
                 </div>
                 <div style={divSmallBox}/>
                 <Table striped bordered hover variant='dark'>
