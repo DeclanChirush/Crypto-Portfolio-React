@@ -3,6 +3,11 @@ import {Button, Container, Table} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import NewsService from "../../services/NewsService";
+import Connection from "../../services/connection.json";
+
+import Modal from "react-bootstrap/Modal";
+
+const FLASK_API = Connection.localAddress + '/news';
 
 function NewsList(props) {
     const divBox = {
@@ -14,6 +19,9 @@ function NewsList(props) {
 
     let count = 1;
     const [newsList, setNewsList] = useState([]);
+    const [show, setShow] = useState(false);
+    const [newsId, setNewsId] = useState("");
+
 
     useEffect(() => {
         async function dataFetch() {
@@ -37,6 +45,21 @@ function NewsList(props) {
             });
     }
 
+    const handleClose = () => {
+        setShow(false);
+    }
+
+    const handleShow = (id) => {
+        setNewsId(id);
+        setShow(true);
+    }
+
+    const onClickNewsDelete = (id) => {
+            setShow(true);
+            handleDelete(id);
+            window.location.reload();
+    }
+
     return (
         <div>
             {/*style={{*/}
@@ -44,6 +67,20 @@ function NewsList(props) {
             {/*backgroundSize: 'cover',*/}
             {/*overflow: 'hidden',}}*/}
             <Navbar/>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <p>this delete cannot be undone!</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                    <Button variant="danger" onClick={()=> onClickNewsDelete(newsId)} >Delete</Button>
+                </Modal.Footer>
+            </Modal>
             <div style={divBox}/>
             <Container>
                 <div >
@@ -98,7 +135,7 @@ function NewsList(props) {
                                               className={'btn btn-primary'}>Edit</Link>
                                     </td>
                                     <td>
-                                        <Button className="btn-danger">Delete</Button>
+                                        <Link onClick={()=> handleShow(news._id.$oid)}    className={'btn btn-danger'}>Delete</Link>
                                     </td>
                                 </tr>
                             ))
