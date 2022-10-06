@@ -3,6 +3,7 @@ import {Button, Container, Table} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import CurrencyDetailsService from "../../services/CurrencyDetailsService";
+import Modal from "react-bootstrap/Modal";
 
 function CoinsList(props) {
     const divBox = {
@@ -14,6 +15,8 @@ function CoinsList(props) {
 
     let count = 1;
     const [coinsList, setCardData] = useState([]);
+    const [show, setShow] = useState(false);
+    const [coinId, setCoinId] = useState("");
 
     useEffect(() => {
         async function dataFetch() {
@@ -37,6 +40,21 @@ function CoinsList(props) {
             });
     }
 
+    const handleClose = () => {
+        setShow(false);
+    }
+
+    const handleShow = (id) => {
+        setCoinId(id);
+        setShow(true);
+    }
+
+    const onClickCoinDelete = (id) => {
+        setShow(true);
+        handleDelete(id);
+        window.location.reload();
+    }
+
     return (
         <div>
             {/*style={{*/}
@@ -44,6 +62,20 @@ function CoinsList(props) {
             {/*backgroundSize: 'cover',*/}
             {/*overflow: 'hidden',}}*/}
             <Navbar/>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Are you sure?</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <p>this delete cannot be undone!</p>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                    <Button variant="danger" onClick={()=> onClickCoinDelete(coinId)} >Delete</Button>
+                </Modal.Footer>
+            </Modal>
             <div style={divBox}/>
             <Container>
                 <div>
@@ -96,7 +128,7 @@ function CoinsList(props) {
                                               className={'btn btn-primary'}>Edit</Link>
                                     </td>
                                     <td>
-                                        <Button className="btn-danger">Delete</Button>
+                                        <Link onClick={()=> handleShow(coin._id.$oid)} className={'btn btn-danger'}>Delete</Link>
                                     </td>
                                 </tr>
                             ))
