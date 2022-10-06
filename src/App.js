@@ -59,7 +59,7 @@ function App() {
             component={About}
           />
           <Route
-            path={`${process.env.PUBLIC_URL + "/about-bitcoin"}`}
+            path={`${process.env.PUBLIC_URL + "/coins"}`}
             component={AboutBitcoin}
           />
           <Route
@@ -71,7 +71,7 @@ function App() {
             component={Blog}
           />
           <Route
-            path={`${process.env.PUBLIC_URL + "/blog-right-sidebar"}`}
+            path={`${process.env.PUBLIC_URL + "/news"}`}
             component={BlogRightSidebar}
           />
           <Route

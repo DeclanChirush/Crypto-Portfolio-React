@@ -67,6 +67,7 @@ function EditCoin() {
             .then(response => {
                 setMessage(response.data);
                 setLoading(false);
+                window.location.replace("/coins-list")
             })
             .catch(error => console.log(error.message));
     };
@@ -161,7 +162,7 @@ function EditCoin() {
                         {message && (
                             <div className="form-group">
                                 <div
-                                    className={successful ? "alert alert-success text-center" : "alert alert-danger text-center"}
+                                    className={successful ? "alert alert-success text-center" : "alert alert-success text-center"}
                                     role="alert">
                                     {message}
                                 </div>

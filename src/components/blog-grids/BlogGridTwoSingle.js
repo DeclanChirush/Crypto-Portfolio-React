@@ -7,7 +7,7 @@ const BlogGridTwoSingle = ({ data }) => {
     <div className="col-lg-4 col-sm-6 col-12 col-md-6">
       <article className="blog__2">
         <div className="thumb">
-          <Link to={process.env.PUBLIC_URL + "/about-bitcoin"}>
+          <Link to={process.env.PUBLIC_URL + "/coins"}>
             <img src={process.env.PUBLIC_URL + data.image} alt=""/>
           </Link>
         </div>
