@@ -24,7 +24,7 @@ const Introduction = () => {
               </p>
               <Link
                 className="secure__btn dg__btn btn--trans"
-                to={process.env.PUBLIC_URL + "/about-bitcoin"}
+                to={process.env.PUBLIC_URL + "/coins"}
               >
                 GET STARTED
               </Link>
