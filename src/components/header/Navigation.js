@@ -26,10 +26,10 @@ const Navigation = () => {
           {/*</ul>*/}
         </li>
         <li className="drop">
-          <Link to={process.env.PUBLIC_URL + "/about-bitcoin"}>Coins</Link>
+          <Link to={process.env.PUBLIC_URL + "/coins"}>Coins</Link>
         </li>
         <li className="drop">
-          <Link to={process.env.PUBLIC_URL + "/blog-right-sidebar"}>News</Link>
+          <Link to={process.env.PUBLIC_URL + "/news"}>News</Link>
           {/*<ul className="dropdown">*/}
           {/*  <li>*/}
           {/*    <Link to={process.env.PUBLIC_URL + "/blog"}>Blog Page</Link>*/}

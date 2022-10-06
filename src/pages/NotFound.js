@@ -8,10 +8,10 @@ const NotFound = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Howard | Not Found</title>
+        <title>CRYPTO FORETELLER  | Not Found</title>
         <meta
           name="description"
-          content="404 page of React JS Crypto Currency Template."
+          content="404 page of CRYPTO FORETELLER."
         />
       </MetaTags>
       <LayoutTwo theme="white">
