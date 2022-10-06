@@ -9,7 +9,7 @@ const AboutBitcoin = () => {
     return (
         <Fragment>
             <MetaTags>
-                <title>Coins</title>
+                <title>CRYPTO FORETELLER | Coins</title>
                 <meta
                     name="description"
                     content="About bitcoin page of CRYPTO FORETELLER"

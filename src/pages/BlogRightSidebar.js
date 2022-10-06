@@ -8,7 +8,7 @@ const BlogRightSidebar = () => {
   return (
     <Fragment>
       <MetaTags>
-        <title> CODE FORETELLER | Latest News</title>
+        <title>CRYPTO FORETELLER | News</title>
         <meta
           name="CODE FORETELLER"
           content="Blog page of CODE FORETELLER"
