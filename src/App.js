@@ -103,7 +103,7 @@ function App() {
             component={Wallet}
           />
           <Route
-            path={`${process.env.PUBLIC_URL + "/login-register"}`}
+            path={`${process.env.PUBLIC_URL + "/login"}`}
             component={LoginRegister}
           />
           <Route
