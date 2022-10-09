@@ -20,6 +20,10 @@ class CurrencyService {
     getPredictionByCurrencyAction(currency, action) {
         return axios.get(FLASK_API + '/predict/' + currency + '/' + action)
     }
+
+    getSentiment(){
+        return axios.get(FLASK_API + '/sentiment')
+    }
 }
 
 export default new CurrencyService();
