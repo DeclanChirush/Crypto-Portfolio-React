@@ -1,53 +1,29 @@
 import React, {useEffect, useState} from 'react';
-import {Col, Image, Row} from "react-bootstrap";
+import {Card, Col, Image, Row} from "react-bootstrap";
 import CurrencyService from "../../services/CurrencyService";
 import ScoreMeter from "./ScoreMeter";
 
 
-const ForetellerDetail = ({title, coinImage, code}) => {
-    const [priceData, setPriceData] = useState([]);
-    const [volumeData, setVolumeData] = useState([]);
-    const [marketCapData, setMarketCapData] = useState([]);
+const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, marketCapData}) => {
 
+    const [sentimentData, setSentimentData] = useState([]);
 
     useEffect(() => {
         async function dataFetch() {
-            await CurrencyService.getPredictionByCurrencyAction(code, 'price')
+            await CurrencyService.getSentiment()
                 .then(response => response.data)
-                .then(response => response.data)
-                .then(response => {
-                    setPriceData(response)
+                .then((data) => {
+                    setSentimentData(data);
+                    console.log(data)
                 })
-                .catch(error => {
-                    console.log(error.message)
-                });
-
-            await CurrencyService.getPredictionByCurrencyAction(code, 'volume')
-                .then(response => response.data)
-                .then(response => response.data)
-                .then(response => {
-                    setVolumeData(response)
-                })
-                .catch(error => {
-                    console.log(error.message)
-                });
-
-            await CurrencyService.getPredictionByCurrencyAction(code, 'market_cap')
-                .then(response => response.data)
-                .then(response => response.data)
-                .then(response => {
-                    setMarketCapData(response)
-                })
-                .catch(error => {
-                    console.log(error.message)
-                });
+                .catch(error => console.log(error.message));
         }
 
         dataFetch();
     }, []);
 
     return (
-        <div className="dg__software__area section-padding--tb bg--white">
+        <div className="dg__software__area bg--white pt-5">
             <div className="container">
                 <div className="row align-items-center">
 
@@ -63,75 +39,127 @@ const ForetellerDetail = ({title, coinImage, code}) => {
                                        height={120}/>
                             </div>
 
-                            <div className='pt-3 text-left'>
-                                <Row>
-                                    <Col>
-                                        <div></div>
-                                    </Col>
-                                    <Col className='text-right'>
-                                        <div>
-                                            <h4>Today</h4>
-                                        </div>
-                                    </Col>
-                                    <Col className='text-right'>
-                                        <div>
-                                            <h4>Tomorrow</h4>
-                                        </div>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col style={{backgroundColor:'#e8eaf6'}}>
-                                        <div>
-                                            <h4>USD Price</h4>
-                                        </div>
-                                    </Col>
-                                    <Col style={{backgroundColor:'#e8eaf6'}} className='text-right font-weight-bold'>
-                                        <div>
-                                            <p>$ {priceData.today}</p>
-                                        </div>
-                                    </Col>
-                                    <Col style={{backgroundColor:'#e8eaf6'}} className='text-right font-weight-bold'>
-                                        <div>
-                                            <p>$ {priceData.tomorrow}</p>
-                                        </div>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col style={{backgroundColor:'#e3f2fd'}}>
-                                        <div>
-                                            <h4>24H Volume</h4>
-                                        </div>
-                                    </Col>
-                                    <Col style={{backgroundColor:'#e3f2fd'}} className='text-right font-weight-bold'>
-                                        <div>
-                                            <p>$ {volumeData.today}</p>
-                                        </div>
-                                    </Col>
-                                    <Col style={{backgroundColor:'#e3f2fd'}} className='text-right font-weight-bold'>
-                                        <div>
-                                            <p>$ {volumeData.tomorrow}</p>
-                                        </div>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col style={{backgroundColor:'#e1f5fe'}}>
-                                        <div>
-                                            <h4>Market Cap</h4>
-                                        </div>
-                                    </Col>
-                                    <Col style={{backgroundColor:'#e1f5fe'}} className='text-right font-weight-bold'>
-                                        <div>
-                                            <p>$ {marketCapData.today}</p>
-                                        </div>
-                                    </Col>
-                                    <Col style={{backgroundColor:'#e1f5fe'}} className='text-right font-weight-bold'>
-                                        <div>
-                                            <p>$ {marketCapData.tomorrow}</p>
-                                        </div>
-                                    </Col>
-                                </Row>
-                            </div>
+                            <Row>
+                                <Col className='pt-3 text-left col-9'>
+                                    <Row>
+                                        <Col>
+                                            <div></div>
+                                        </Col>
+                                        <Col className='text-right'>
+                                            <div>
+                                                <h4>Today</h4>
+                                            </div>
+                                        </Col>
+                                        <Col className='text-right'>
+                                            <div>
+                                                <h4>Tomorrow</h4>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col style={{backgroundColor: '#e8eaf6'}}>
+                                            <div>
+                                                <h4>USD Price</h4>
+                                            </div>
+                                        </Col>
+                                        <Col style={{backgroundColor: '#e8eaf6'}}
+                                             className='text-right font-weight-bold'>
+                                            <div>
+                                                <p>$ {priceData.today}</p>
+                                            </div>
+                                        </Col>
+                                        <Col style={{backgroundColor: '#e8eaf6'}}
+                                             className='text-right font-weight-bold'>
+                                            <div>
+                                                <p>$ {priceData.tomorrow}</p>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col style={{backgroundColor: '#e3f2fd'}}>
+                                            <div>
+                                                <h4>24H Volume</h4>
+                                            </div>
+                                        </Col>
+                                        <Col style={{backgroundColor: '#e3f2fd'}}
+                                             className='text-right font-weight-bold'>
+                                            <div>
+                                                <p>$ {volumeData.today}</p>
+                                            </div>
+                                        </Col>
+                                        <Col style={{backgroundColor: '#e3f2fd'}}
+                                             className='text-right font-weight-bold'>
+                                            <div>
+                                                <p>$ {volumeData.tomorrow}</p>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col style={{backgroundColor: '#e1f5fe'}}>
+                                            <div>
+                                                <h4>Market Cap</h4>
+                                            </div>
+                                        </Col>
+                                        <Col style={{backgroundColor: '#e1f5fe'}}
+                                             className='text-right font-weight-bold'>
+                                            <div>
+                                                <p>$ {marketCapData.today}</p>
+                                            </div>
+                                        </Col>
+                                        <Col style={{backgroundColor: '#e1f5fe'}}
+                                             className='text-right font-weight-bold'>
+                                            <div>
+                                                <p>$ {marketCapData.tomorrow}</p>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                                <Col className=' col-3'>
+                                    <div style={{paddingTop:'3.5em'}}>
+                                        {sentimentData ? (
+                                            <div>
+                                                {sentimentData.sentiment === 'Positive' ? (
+                                                    <Card
+                                                        bg='success'
+                                                    >
+                                                        <Card.Body>
+                                                            <div className='text-center text-white'>
+                                                                <h4 className='text-white text-uppercase'>Status: {sentimentData.sentiment}</h4>
+                                                                <h4 className='text-white text-uppercase'>Score: {sentimentData.score}</h4>
+                                                            </div>
+                                                        </Card.Body>
+                                                    </Card>
+                                                ) : (
+                                                    <Card
+                                                        bg='danger'
+                                                    >
+                                                        <Card.Body>
+                                                            <div className='text-center text-white'>
+                                                                <h4 className='text-white text-uppercase'>Status: {sentimentData.sentiment}</h4>
+                                                                <h4 className='text-white text-uppercase'>Score: {sentimentData.score}</h4>
+                                                            </div>
+                                                        </Card.Body>
+                                                    </Card>
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <Card
+                                                    bg='primary'
+                                                >
+                                                    <Card.Body>
+                                                        <div className='text-center text-white'>
+                                                            <h4 className='text-white text-uppercase'></h4>
+                                                            <h4 className='text-white text-uppercase'></h4>
+                                                        </div>
+                                                    </Card.Body>
+                                                </Card>
+                                            </div>
+                                        )}
 
+                                    </div>
+                                </Col>
+                            </Row>
                         </div>
                     </div>
 
