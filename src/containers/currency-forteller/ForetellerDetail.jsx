@@ -115,17 +115,18 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                                     </Row>
                                 </Col>
                                 <Col className=' col-3'>
-                                    <div style={{paddingTop:'3.5em'}}>
+                                    <div style={{paddingTop:'0.5em'}}>
                                         {sentimentData ? (
                                             <div>
                                                 {sentimentData.sentiment === 'Positive' ? (
                                                     <Card
                                                         bg='success'
                                                     >
+                                                        <Card.Header className='text-center text-white text-uppercase font-weight-bold'>Sentiment Analysis</Card.Header>
                                                         <Card.Body>
                                                             <div className='text-center text-white'>
-                                                                <h4 className='text-white text-uppercase'>Status: {sentimentData.sentiment}</h4>
-                                                                <h4 className='text-white text-uppercase'>Score: {sentimentData.score}</h4>
+                                                                <h4 className='text-white'>Status: {sentimentData.sentiment}</h4>
+                                                                <h4 className='text-white'>Score: {sentimentData.score}%</h4>
                                                             </div>
                                                         </Card.Body>
                                                     </Card>
@@ -133,10 +134,11 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                                                     <Card
                                                         bg='danger'
                                                     >
+                                                        <Card.Header className='text-center text-white text-uppercase font-weight-bold'>Sentiment Analysis</Card.Header>
                                                         <Card.Body>
                                                             <div className='text-center text-white'>
-                                                                <h4 className='text-white text-uppercase'>Status: {sentimentData.sentiment}</h4>
-                                                                <h4 className='text-white text-uppercase'>Score: {sentimentData.score}</h4>
+                                                                <h4 className='text-white'>Status: {sentimentData.sentiment}</h4>
+                                                                <h4 className='text-white'>Score: {sentimentData.score}%</h4>
                                                             </div>
                                                         </Card.Body>
                                                     </Card>
@@ -147,7 +149,9 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                                                 <Card
                                                     bg='primary'
                                                 >
+                                                    <Card.Header className='text-center text-white text-uppercase font-weight-bold'></Card.Header>
                                                     <Card.Body>
+                                                        <Card.Title></Card.Title>
                                                         <div className='text-center text-white'>
                                                             <h4 className='text-white text-uppercase'></h4>
                                                             <h4 className='text-white text-uppercase'></h4>
@@ -167,7 +171,8 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                         <ScoreMeter
                             priceScore={priceData.score}
                             volumeScore={volumeData.score}
-                            marketCapScore={marketCapData.score}/>
+                            marketCapScore={marketCapData.score}
+                            sentimentScore={sentimentData.score}/>
                     </div>
                 </div>
             </div>
