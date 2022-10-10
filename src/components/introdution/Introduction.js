@@ -11,16 +11,11 @@ const Introduction = () => {
                 Introduction
               </h2>
               <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore.
-              </p>
-              <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit,
+                A cryptocurrency is a virtual currency. They became popular because of the decentralisation, and easy access.
+                There are more than 13,000 cryptocurrencies currently in the market and scam projects are rising everyday.
+                Therefore, carrying out a technical and fundamental analysis before buying is is essential.
+                Instead of carrying out them manually, we tend to automating the process which can save lot of time and
+                more efficient because crypto currency market moves very quickly.
               </p>
               <Link
                 className="secure__btn dg__btn btn--trans"

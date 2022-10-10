@@ -27,8 +27,9 @@ const MarketTable = () => {
             <div className="row">
                 <div className="col-lg-12">
                     <SectionTitleTwo title="CRYPTO CURRENCY PRICES"/>
-                    <p className='text-center'>The Bitcoin ecosystem at a glance. Any of our service with free test credits or actual
-                        Bitcoins.</p>
+                    {/*<p className='text-center'>The Bitcoin ecosystem at a glance. Any of our service with free test credits or actual*/}
+                    {/*    Bitcoins.</p>*/}
+                    <br/>
                 </div>
             </div>
             <div className="row">

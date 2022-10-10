@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Form, Row} from "react-bootstrap";
+import {Col, Form, Row} from "react-bootstrap";
 import CurrencyDetailsService from "../../services/CurrencyDetailsService";
 import CurrencyService from "../../services/CurrencyService";
 import SectionTitleTwo from "../../components/ui/section-titles/SectionTitleTwo";
@@ -85,7 +85,20 @@ const ForetellerCard = () => {
             <div className="row">
                 <div className="col-lg-12">
                     <SectionTitleTwo title="CURRENCY FORETELLER"/>
-                    <p className='text-center'>{text}</p>
+
+                    <p className="text-center">Select the currency you want and run the analysis.</p>
+                    {/*<h4>Be Aware : </h4>*/}
+                    {/*<p>*/}
+                    {/*    Done with the foreknowledge or forewarning that there is implied*/}
+                    {/*    risk or danger which one must accept as one's own responsibility.*/}
+                    {/*</p>*/}
+                    <h4 className="text-danger text-center">Be Aware! : Done with the foreknowledge or forewarning that there is implied
+                        risk or danger which one must accept as one's own responsibility.</h4>
+                    {/*<p className={"text-danger text-center text--italic"}>*/}
+                    {/*    [ Done with the foreknowledge or forewarning that there is implied*/}
+                    {/*    risk or danger which one must accept as one's own responsibility.]*/}
+                    {/*</p>*/}
+
                 </div>
             </div>
 

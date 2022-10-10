@@ -17,21 +17,17 @@ const HowWorks = () => {
           <div className="col-lg-6 col-md-12 col-sm-12 col-12 sm__mt--40 md__mt--40">
             <div className="content">
               <h2>How It Works?</h2>
-              <h6>
-                cryptocurrency is a digital asset designed to work as a medium
-                of exchange
-              </h6>
               <p className={"text-white"}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Our system carrie out multiple tasks such as, cryptocurrency future prices prediction.
+                Analyze the community ideas, feedbacks and news to understand community mindset.
+                Predict the date of the crypto currencies being somewhat stable. Show which days are better
+                to trade each cryptocurrency by analysing 24Hrs trading volumes. Generate overall trust scores.
               </p>
               <Link
                 className="slider--one dg__btn btn--white btn--theme"
-                to={process.env.PUBLIC_URL + "/contact"}
+                to={process.env.PUBLIC_URL + "/coins"}
               >
-                SEE MORE
+                GET STARTED
               </Link>
             </div>
           </div>

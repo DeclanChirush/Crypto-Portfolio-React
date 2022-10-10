@@ -18,22 +18,10 @@ const BlogSidebar = () => {
         <h4>CATEGORIES</h4>
         <ul>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Online Currency</Link>
+            <Link to={"https://www.coindesk.com/price/bitcoin/"}>Bitcoin Rate</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Money Transfer</Link>
-          </li>
-          <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Bitcoin Rate</Link>
-          </li>
-          <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>World Trade</Link>
-          </li>
-          <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Market Analytics</Link>
-          </li>
-          <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Market Analytics</Link>
+            <Link to={"https://www.wto.org/index.htm"}>World Trade</Link>
           </li>
         </ul>
       </div>
@@ -126,31 +114,31 @@ const BlogSidebar = () => {
         <h4>tag</h4>
         <ul className="d-flex flex-wrap">
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Design</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>cryptocurrency</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Print</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>bitcoin</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Adobe</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>crypto</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Creative</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>blockchain</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Support</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>ethereum</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Print</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>btc</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Creative</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>money</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Support</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>cryptonews</Link>
           </li>
           <li>
-            <Link to={process.env.PUBLIC_URL + "/blog"}>Print</Link>
+            <Link to={process.env.PUBLIC_URL + "/blog"}>finance</Link>
           </li>
         </ul>
       </div>

@@ -20,7 +20,6 @@ const HeroSliderTwoSingle = ({ data }) => {
             <div className="slide__inner">
               <h1>{data.title}</h1>
               <p>{data.text}</p>
-              <br></br>
               <Link
                 className="slider--one dg__btn btn--white btn--theme"
                 to={process.env.PUBLIC_URL + data.url}
