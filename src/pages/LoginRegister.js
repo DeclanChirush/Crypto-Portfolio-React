@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect} from "react";
 import MetaTags from "react-meta-tags";
 import {Link} from "react-router-dom";
 import LayoutTwo from "../layouts/LayoutTwo";
@@ -6,18 +6,42 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import Breadcrumb from "../components/breadcrumbs/Breadcrumb";
 import Form from "react-validation/build/form";
+import UserService from "../services/UserService";
 
 const LoginRegister = () => {
 
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
+    const [confirmPassword, setConfirmPassword] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [contactNo, setContactNo] = React.useState("");
+    const [fullName, setFullName] = React.useState("");
 
-    const handleSubmit = (event) => {
+
+    const handleSubmitLogin = async (event) => {
         event.preventDefault();
+
+        await UserService.login(username, password).then(()=>{
+            window.location.href = "/";
+        }, (error) => {
+            alert(error);
+        });
 
         if (username === "admin" && password === "admin") {
             window.location.replace("/admin-dashboard");
         }
+    }
+
+    const handleSubmitRegister = async (event) => {
+        event.preventDefault();
+
+        await UserService.register(fullName,email,contactNo,username,password).then(
+            ()=>{
+                window.location.href = "/login";
+            }, (error) => {
+            alert(error);
+        });
+
     }
 
     return (
@@ -45,17 +69,18 @@ const LoginRegister = () => {
                                         <Nav.Item>
                                             <Nav.Link eventKey="login">Login</Nav.Link>
                                         </Nav.Item>
-                                        {/*<Nav.Item>*/}
-                                        {/*  <Nav.Link eventKey="register">Register</Nav.Link>*/}
-                                        {/*</Nav.Item>*/}
+                                        <Nav.Item>
+                                            <Nav.Link eventKey="register">Register</Nav.Link>
+                                        </Nav.Item>
                                     </Nav>
                                     <Tab.Content>
-                                        <Form onSubmit={handleSubmit}>
-                                            <Tab.Pane eventKey="login">
+                                        <Tab.Pane eventKey="login">
+                                            <Form onSubmit={handleSubmitLogin}>
                                                 <div className="single__account">
                                                     <div className="input__box">
                                                         <span>Username</span>
                                                         <input type="text"
+                                                               placeholder={"Ex: JohnDoe"}
                                                                value={username}
                                                                onChange={e => setUsername(e.target.value)}
                                                                required
@@ -64,6 +89,7 @@ const LoginRegister = () => {
                                                     <div className="input__box">
                                                         <span>Password</span>
                                                         <input type="password"
+                                                               placeholder={"Ex: ********"}
                                                                value={password}
                                                                onChange={e => setPassword(e.target.value)}
                                                                required
@@ -77,27 +103,69 @@ const LoginRegister = () => {
                                                     </Link>
                                                     <button className="account__btn">Login</button>
                                                 </div>
-                                            </Tab.Pane>
-                                        </Form>
+                                            </Form>
+                                        </Tab.Pane>
                                         <Tab.Pane eventKey="register">
-                                            <div className="single__account">
-                                                <div className="input__box">
-                                                    <span>First Name</span>
-                                                    <input type="text"/>
+                                            <Form onSubmit={handleSubmitRegister}>
+                                                <div className="single__account">
+                                                    <div className="input__box">
+                                                        <span>Full Name</span>
+                                                        <input type="text"
+                                                               placeholder={"Ex: John Doe"}
+                                                               value={fullName}
+                                                               onChange={e => setFullName(e.target.value)}
+                                                               required
+                                                        />
+                                                    </div>
+                                                    <div className="input__box">
+                                                        <span>Email address</span>
+                                                        <input type="email"
+                                                               placeholder={"Ex: abc@gmail.com"}
+                                                               value={email}
+                                                               onChange={e => setEmail(e.target.value)}
+                                                               required
+                                                        />
+                                                    </div>
+                                                    <div className="input__box">
+                                                        <span>Contact number</span>
+                                                        <input type="tel"
+                                                               placeholder={"Ex: 0771234567"}
+                                                               maxLength={10}
+                                                               value={contactNo}
+                                                               onChange={e => setContactNo(e.target.value)}
+                                                               required
+                                                        />
+                                                    </div>
+                                                    <div className="input__box">
+                                                        <span>Username</span>
+                                                        <input type="text"
+                                                               placeholder={"Ex: JohnDoe"}
+                                                               value={username}
+                                                               onChange={e => setUsername(e.target.value)}
+                                                               required
+                                                        />
+                                                    </div>
+                                                    <div className="input__box">
+                                                        <span>Password</span>
+                                                        <input type="password"
+                                                               placeholder={"Ex: ********"}
+                                                               value={password}
+                                                               onChange={e => setPassword(e.target.value)}
+                                                               required
+                                                        />
+                                                    </div>
+                                                    <div className="input__box">
+                                                        <span>Confirm Password</span>
+                                                        <input type="password"
+                                                                placeholder={"Ex: ********"}
+                                                               value={confirmPassword}
+                                                               onChange={e => setConfirmPassword(e.target.value)}
+                                                               required
+                                                        />
+                                                    </div>
+                                                    <button className="account__btn">Register</button>
                                                 </div>
-                                                <div className="input__box">
-                                                    <span>Last Name</span>
-                                                    <input type="text"/>
-                                                </div>
-                                                <div className="input__box">
-                                                    <span>Email address</span>
-                                                    <input type="email"/>
-                                                </div>
-                                                <div className="input__box">
-                                                    <span>Password</span>
-                                                    <input type="password"/>
-                                                </div>
-                                            </div>
+                                            </Form>
                                         </Tab.Pane>
                                     </Tab.Content>
                                 </Tab.Container>
