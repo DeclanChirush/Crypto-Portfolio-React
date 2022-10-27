@@ -74,10 +74,10 @@ function App() {
             path={`${process.env.PUBLIC_URL + "/news"}`}
             component={BlogRightSidebar}
           />
-          {/*<Route*/}
-          {/*  path={`${process.env.PUBLIC_URL + "/blog-post"}`}*/}
-          {/*  component={BlogPost}*/}
-          {/*/>*/}
+          <Route
+            path={`${process.env.PUBLIC_URL + "/news-details/:id"}`}
+            component={BlogPost}
+          />
           <Route
             path={`${process.env.PUBLIC_URL + "/contact"}`}
             component={Contact}
