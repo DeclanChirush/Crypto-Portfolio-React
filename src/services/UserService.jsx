@@ -7,25 +7,30 @@ class UserService{
 
     // User login
     login(username, password){
-        return axios.post(FLASK_API + "login", {
+        return axios.post(FLASK_API + "signin", {
             username,
             password
         }).then(response => {
             if(response.data){
-                localStorage.setItem("user", JSON.stringify(response.data));
+                if(response.message === "Unsuccessful") {
+                    console.log("Unsuccessful");
+                }else{
+                    sessionStorage.setItem("user", JSON.stringify(response.data));
+                }
             }
             return response.data;
         });
     }
 
     // User register
-    register(fullName, email, contactNo, username, password){
-        return axios.post(FLASK_API + "register", {
-            fullName,
-            email,
-            contactNo,
+    register(full_name, email, username, password, role, image){
+        return axios.post(FLASK_API + "signup", {
+            full_name,
             username,
-            password
+            email,
+            password,
+            role,
+            image
         });
     }
 
@@ -38,6 +43,7 @@ class UserService{
     logout() {
         sessionStorage.removeItem("user");
         sessionStorage.clear();
+        window.location.href = "/";
     }
 
 }

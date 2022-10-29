@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import './Navbar.css';
 import {IconContext} from 'react-icons';
 import {Nav} from "react-bootstrap";
+import UserService from "../../../services/UserService";
+import Logo from "../../header/Logo";
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);
@@ -15,7 +17,9 @@ function Navbar() {
             <IconContext.Provider value={{color: '#fff'}}>
                 <div className='navbar'>
                     <Link to='#' className='menu-bars'>
-                        <FaIcons.FaBars onClick={showSidebar}/>
+                        <Logo
+                            image={"/images/logo/1.png"}
+                        />
                     </Link>
                     <Nav>
                         <li className="nav-item">
@@ -28,7 +32,7 @@ function Navbar() {
                             <Link to={'/coins-list'} className={'nav-link text-white'}> Coins </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={'/'} className={'nav-link text-white'}> Logout </Link>
+                            <Link className={'nav-link text-white'} onClick={UserService.logout}> Logout </Link>
                         </li>
 
                     </Nav>

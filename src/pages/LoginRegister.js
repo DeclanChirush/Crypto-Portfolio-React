@@ -7,6 +7,9 @@ import Nav from "react-bootstrap/Nav";
 import Breadcrumb from "../components/breadcrumbs/Breadcrumb";
 import Form from "react-validation/build/form";
 import UserService from "../services/UserService";
+import Modal from "react-bootstrap/Modal";
+import {Button} from "react-bootstrap";
+
 
 const LoginRegister = () => {
 
@@ -14,32 +17,58 @@ const LoginRegister = () => {
     const [password, setPassword] = React.useState("");
     const [confirmPassword, setConfirmPassword] = React.useState("");
     const [email, setEmail] = React.useState("");
-    const [contactNo, setContactNo] = React.useState("");
     const [fullName, setFullName] = React.useState("");
+    const [role, setRole] = React.useState("");
+    const [imageLink, setImage] = React.useState("");
+    const [responseMessage, setResponseMessage] = React.useState("");
+    const [errorTitle, setErrorTitle] = React.useState("");
+    const [show, setShow] = React.useState(false);
 
+    useEffect(() => {
+        setRole("Customer");
+        setImage("https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg");
+    }, []);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const handleSubmitLogin = async (event) => {
         event.preventDefault();
 
-        await UserService.login(username, password).then(()=>{
-            window.location.href = "/";
-        }, (error) => {
-            alert(error);
-        });
+        await UserService.login(username, password).then(response => {
+            if (response.code === 200) {
+                if (response.message === "Unsuccessful") {
+                    setResponseMessage(response.data);
+                    setErrorTitle("Login Failed!");
+                    handleShow();
+                } else {
+                    console.log(response.data);
+                    window.location.href = "/";
+                }
+            }
 
-        if (username === "admin" && password === "admin") {
-            window.location.replace("/admin-dashboard");
-        }
+        });
     }
+
 
     const handleSubmitRegister = async (event) => {
         event.preventDefault();
 
-        await UserService.register(fullName,email,contactNo,username,password).then(
-            ()=>{
+        await UserService.register(fullName, email, username, password, role, imageLink).then(response => {
+
+            console.log("INSIDE RESPONSE: ", response.data.message);
+            if (response.data.message === "Unsuccessful") {
+                setResponseMessage(response.data.data);
+                setErrorTitle("Registration Failed!");
+                handleShow();
+            } else {
+                console.log(response.data);
                 window.location.href = "/login";
-            }, (error) => {
-            alert(error);
+            }
+        }, error => {
+            setResponseMessage(error.response.data);
+            setErrorTitle("Registration Failed!");
+            handleShow();
         });
 
     }
@@ -56,6 +85,19 @@ const LoginRegister = () => {
             <LayoutTwo theme="white">
                 {/* breadcrumb */}
                 <Breadcrumb title="LOGIN"/>
+                <div className="login-register-area pt-100 pb-100">
+                    <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>{errorTitle}</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>{responseMessage}</Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={handleClose}>
+                                try again
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div>
                 {/* login register content */}
                 <div className="dg__account section-padding--xl">
                     <div className="container">
@@ -127,16 +169,6 @@ const LoginRegister = () => {
                                                         />
                                                     </div>
                                                     <div className="input__box">
-                                                        <span>Contact number</span>
-                                                        <input type="tel"
-                                                               placeholder={"Ex: 0771234567"}
-                                                               maxLength={10}
-                                                               value={contactNo}
-                                                               onChange={e => setContactNo(e.target.value)}
-                                                               required
-                                                        />
-                                                    </div>
-                                                    <div className="input__box">
                                                         <span>Username</span>
                                                         <input type="text"
                                                                placeholder={"Ex: JohnDoe"}
@@ -157,7 +189,7 @@ const LoginRegister = () => {
                                                     <div className="input__box">
                                                         <span>Confirm Password</span>
                                                         <input type="password"
-                                                                placeholder={"Ex: ********"}
+                                                               placeholder={"Ex: ********"}
                                                                value={confirmPassword}
                                                                onChange={e => setConfirmPassword(e.target.value)}
                                                                required
