@@ -43,6 +43,7 @@ class UserService{
     logout() {
         sessionStorage.removeItem("user");
         sessionStorage.clear();
+        window.location.href = "/";
     }
 
 }
