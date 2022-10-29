@@ -63,7 +63,7 @@ const LoginRegister = () => {
                 handleShow();
             } else {
                 console.log(response.data);
-                window.location.href = "/";
+                window.location.href = "/login";
             }
         }, error => {
             setResponseMessage(error.response.data);
