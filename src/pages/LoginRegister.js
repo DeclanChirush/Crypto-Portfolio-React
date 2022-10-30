@@ -61,13 +61,8 @@ const LoginRegister = () => {
         event.preventDefault();
 
         if (password.length >= 6) {
-
-            console.log("password length: " + password.length);
-
             if (password === confirmPassword) {
                 await UserService.register(fullName, email, username, password, role, imageLink).then(response => {
-
-                    console.log("INSIDE RESPONSE: ", response.data.message);
                     if (response.data.message === "Unsuccessful") {
                         setResponseMessage(response.data.data);
                         setErrorTitle("Registration Failed!");
