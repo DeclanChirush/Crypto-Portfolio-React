@@ -43,13 +43,11 @@ function AddNews(props) {
             "author": author
         }
 
-        NewsService.createNews(data)
-            .then(response => {
-                setMessage(response.data);
+        NewsService.createNews(data).then(response => {
+                setMessage(response.data.data);
                 setLoading(false);
-                window.location.replace("/news-list");
-            })
-            .catch(error => console.log(error.message));
+                window.location.replace(process.env.PUBLIC_URL + "/news-list");
+            }).catch(error => console.log(error.message));
     };
 
     return (

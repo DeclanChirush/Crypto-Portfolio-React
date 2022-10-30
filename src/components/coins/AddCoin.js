@@ -44,7 +44,7 @@ function AddCoin(props) {
 
         CurrencyDetailsService.createCurrency(data)
             .then(response => {
-                setMessage(response.data);
+                setMessage(response.data.data);
                 setLoading(false);
                 window.location.replace("/coins-list");
             })
