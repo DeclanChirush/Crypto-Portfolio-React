@@ -13,6 +13,7 @@ import {Button} from "react-bootstrap";
 
 const LoginRegister = () => {
 
+
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [confirmPassword, setConfirmPassword] = React.useState("");
@@ -36,6 +37,7 @@ const LoginRegister = () => {
         event.preventDefault();
 
         await UserService.login(username, password).then(response => {
+            console.log("password length: " + password.length);
             if (response.code === 200) {
                 if (response.message === "Unsuccessful") {
                     setResponseMessage(response.data);
@@ -47,6 +49,10 @@ const LoginRegister = () => {
                 }
             }
 
+        }, error => {
+            setResponseMessage(error.message);
+            setErrorTitle("Login Failed!");
+            handleShow();
         });
     }
 
@@ -54,25 +60,38 @@ const LoginRegister = () => {
     const handleSubmitRegister = async (event) => {
         event.preventDefault();
 
-        await UserService.register(fullName, email, username, password, role, imageLink).then(response => {
+        if (password.length >= 6) {
 
-            console.log("INSIDE RESPONSE: ", response.data.message);
-            if (response.data.message === "Unsuccessful") {
-                setResponseMessage(response.data.data);
-                setErrorTitle("Registration Failed!");
-                handleShow();
+            console.log("password length: " + password.length);
+
+            if (password === confirmPassword) {
+                await UserService.register(fullName, email, username, password, role, imageLink).then(response => {
+
+                    console.log("INSIDE RESPONSE: ", response.data.message);
+                    if (response.data.message === "Unsuccessful") {
+                        setResponseMessage(response.data.data);
+                        setErrorTitle("Registration Failed!");
+                        handleShow();
+                    } else {
+                        console.log(response.data);
+                        window.location.href = "/login";
+                    }
+                }, error => {
+                    setResponseMessage(error.message);
+                    setErrorTitle("Registration Failed!");
+                    handleShow();
+                });
             } else {
-                console.log(response.data);
-                window.location.href = "/login";
+                setErrorTitle("Password Mismatch!");
+                setResponseMessage("Passwords do not match!");
+                handleShow();
             }
-        }, error => {
-            setResponseMessage(error.response.data);
-            setErrorTitle("Registration Failed!");
+        } else {
+            setErrorTitle("Password too short!");
+            setResponseMessage("Password must be at least 6 characters long");
             handleShow();
-        });
-
+        }
     }
-
     return (
         <Fragment>
             <MetaTags>
@@ -137,12 +156,13 @@ const LoginRegister = () => {
                                                                required
                                                         />
                                                     </div>
-                                                    <Link
-                                                        className="forget__pass"
-                                                        href={process.env.PUBLIC_URL + "/"}
-                                                    >
-                                                        Lost your password?
-                                                    </Link>
+                                                    {/*<Link*/}
+                                                    {/*    className="forget__pass"*/}
+                                                    {/*    href={process.env.PUBLIC_URL + "/"}*/}
+                                                    {/*>*/}
+                                                    {/*    Lost your password?*/}
+                                                    {/*</Link>*/}
+                                                    <br/>
                                                     <button className="account__btn">Login</button>
                                                 </div>
                                             </Form>
@@ -195,6 +215,7 @@ const LoginRegister = () => {
                                                                required
                                                         />
                                                     </div>
+                                                    <br/>
                                                     <button className="account__btn">Register</button>
                                                 </div>
                                             </Form>

@@ -6,6 +6,7 @@ import NewsService from "../../services/NewsService";
 import Connection from "../../services/connection.json";
 
 import Modal from "react-bootstrap/Modal";
+import CommonAuthCheck from "../../services/CommonAuthCheck";
 
 const FLASK_API = Connection.localAddress + '/news';
 
@@ -148,4 +149,4 @@ function NewsList(props) {
     );
 }
 
-export default NewsList;
+export default CommonAuthCheck(NewsList);
