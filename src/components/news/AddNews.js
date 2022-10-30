@@ -6,6 +6,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import NewsService from "../../services/NewsService";
 import {Link} from "react-router-dom";
+import CommonAuthCheck from "../../services/CommonAuthCheck";
 
 // TODO: Validating registration form fields
 const requiredField = data => {
@@ -152,4 +153,4 @@ function AddNews(props) {
     );
 }
 
-export default AddNews;
+export default CommonAuthCheck(AddNews);
