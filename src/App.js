@@ -27,6 +27,7 @@ import CoinsList from "./components/coins/CoinsList";
 import EditCoin from "./components/coins/EditCoin";
 import Foreteller from "./pages/Foreteller";
 import CustomerDashboardHome from "./pages/CustomerDashboardHome";
+import CustomerProfile from "./components/customer/CustomerProfile";
 
 
 function App() {
@@ -150,6 +151,11 @@ function App() {
           <Route
               path={`${process.env.PUBLIC_URL + "/customer-dashboard"}`}
               component={CustomerDashboardHome}
+          />
+
+          <Route
+              path={`${process.env.PUBLIC_URL + "/customer-profile"}`}
+              component={CustomerProfile}
           />
 
           <Route exact component={NotFound} />
