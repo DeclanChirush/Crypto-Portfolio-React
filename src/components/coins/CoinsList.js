@@ -77,6 +77,7 @@ function CoinsList(props) {
                 </Modal.Footer>
             </Modal>
             <div style={divBox}/>
+            <h2 className="text-center"><mark>All Coins Details</mark></h2>
             <Container>
                 <div>
                     <Link to={`/add-coin`} className={'btn btn-success text-white'}>Add New Coin</Link>

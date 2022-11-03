@@ -83,6 +83,7 @@ function NewsList(props) {
                 </Modal.Footer>
             </Modal>
             <div style={divBox}/>
+            <h2 className="text-center"><mark>All News Details</mark></h2>
             <Container>
                 <div >
                     <Link to={`/add-news`} className={'btn btn-success text-white'}>Add a News</Link>
