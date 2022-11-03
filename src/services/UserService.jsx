@@ -46,6 +46,10 @@ class UserService{
         window.location.href = "/";
     }
 
+    getAllUsers() {
+        return axios.get(Connection.localAddress + '/user');
+    }
+
 }
 
 export default new UserService();

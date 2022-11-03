@@ -32,6 +32,9 @@ function Navbar() {
                             <Link to={'/coins-list'} className={'nav-link text-white'}> Coins </Link>
                         </li>
                         <li className="nav-item">
+                            <Link to={'/users-list'} className={'nav-link text-white'}> Users </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className={'nav-link text-white'} onClick={UserService.logout}> Logout </Link>
                         </li>
 
