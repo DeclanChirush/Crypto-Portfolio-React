@@ -28,7 +28,7 @@ import EditCoin from "./components/coins/EditCoin";
 import Foreteller from "./pages/Foreteller";
 import CustomerDashboardHome from "./pages/CustomerDashboardHome";
 import UsersList from "./components/dashboard/admin/UsersList";
-
+import CustomerProfile from "./components/customer/CustomerProfile";
 
 function App() {
     return (
@@ -157,8 +157,14 @@ function App() {
                         path={`${process.env.PUBLIC_URL + "/users-list"}`}
                         component={UsersList}
                     />
+                    
+                    <Route
+                        path={`${process.env.PUBLIC_URL + "/customer-profile"}`}
+                        component={CustomerProfile}
+                    />
+                 
                     <Route exact component={NotFound}/>
-
+   
                 </Switch>
             </ScrollToTop>
         </Router>

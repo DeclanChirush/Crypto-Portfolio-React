@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Card, Col, Image, Row} from "react-bootstrap";
 import CurrencyService from "../../services/CurrencyService";
+import CoinService from "../../services/CoinService";
+import fileDownload from "js-file-download";
 import ScoreMeter from "./ScoreMeter";
 
 
@@ -21,6 +23,26 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
 
         dataFetch();
     }, []);
+
+    const handleDownload = (e) => {
+        e.preventDefault();
+
+        // Current Date
+        const date = new Date();
+        const format_date = date.toISOString().substring(0, 10);
+        const file_name = code + '_' + format_date + '.csv'
+
+        CoinService.getSavedDataCSVByCoinName(code)
+            .then(res => {
+                fileDownload(res.data, file_name);
+            }).catch(error => console.log(error.message));
+    };
+
+    const parentDiv = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 
     return (
         <div className="dg__software__area bg--white pt-5">
@@ -115,14 +137,16 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                                     </Row>
                                 </Col>
                                 <Col className=' col-3'>
-                                    <div style={{paddingTop:'0.5em'}}>
+                                    <div style={{paddingTop: '0.5em'}}>
                                         {sentimentData ? (
                                             <div>
                                                 {sentimentData.sentiment === 'Positive' ? (
                                                     <Card
                                                         bg='success'
                                                     >
-                                                        <Card.Header className='text-center text-white text-uppercase font-weight-bold'>Sentiment Analysis</Card.Header>
+                                                        <Card.Header
+                                                            className='text-center text-white text-uppercase font-weight-bold'>Sentiment
+                                                            Analysis</Card.Header>
                                                         <Card.Body>
                                                             <div className='text-center text-white'>
                                                                 <h4 className='text-white'>Status: {sentimentData.sentiment}</h4>
@@ -134,7 +158,9 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                                                     <Card
                                                         bg='danger'
                                                     >
-                                                        <Card.Header className='text-center text-white text-uppercase font-weight-bold'>Sentiment Analysis</Card.Header>
+                                                        <Card.Header
+                                                            className='text-center text-white text-uppercase font-weight-bold'>Sentiment
+                                                            Analysis</Card.Header>
                                                         <Card.Body>
                                                             <div className='text-center text-white'>
                                                                 <h4 className='text-white'>Status: {sentimentData.sentiment}</h4>
@@ -149,7 +175,8 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                                                 <Card
                                                     bg='primary'
                                                 >
-                                                    <Card.Header className='text-center text-white text-uppercase font-weight-bold'></Card.Header>
+                                                    <Card.Header
+                                                        className='text-center text-white text-uppercase font-weight-bold'></Card.Header>
                                                     <Card.Body>
                                                         <Card.Title></Card.Title>
                                                         <div className='text-center text-white'>
@@ -174,6 +201,14 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                             marketCapScore={marketCapData.score}
                             sentimentScore={sentimentData.score}/>
                     </div>
+                </div>
+
+                <div style={parentDiv} className={'pt--40'}>
+                    <h3 className={'text-uppercase'}>History Data</h3>
+                </div>
+
+                <div style={parentDiv}>
+                    <button onClick={handleDownload} className="btn btn-success">Download</button>
                 </div>
             </div>
         </div>
