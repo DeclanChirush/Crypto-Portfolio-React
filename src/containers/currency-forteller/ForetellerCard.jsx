@@ -9,6 +9,7 @@ const ForetellerCard = () => {
     const [cardData, setCardData] = useState([]);
     const [coinName, setCoinName] = useState("default");
     const [coinCode, setCoinCode] = useState("default");
+    const [coinDescription, setCoinDescription] = useState("default");
     const [coinImage, setCoinImage] = useState("default");
     const [priceData, setPriceData] = useState([]);
     const [volumeData, setVolumeData] = useState([]);
@@ -64,6 +65,7 @@ const ForetellerCard = () => {
             title={coinName}
             coinImage={coinImage}
             code={coinCode}
+            desciption={coinDescription}
             priceData={priceData}
             volumeData={volumeData}
             marketCapData={marketCapData}/>
@@ -74,6 +76,7 @@ const ForetellerCard = () => {
         await setCoinName(data.name);
         await setCoinCode(data.code);
         await setCoinImage(data.image);
+        await setCoinDescription(data.description);
         await dataFetch(data.code);
         await handleChange();
     }
@@ -92,7 +95,8 @@ const ForetellerCard = () => {
                     {/*    Done with the foreknowledge or forewarning that there is implied*/}
                     {/*    risk or danger which one must accept as one's own responsibility.*/}
                     {/*</p>*/}
-                    <h4 className="text-danger text-center">Be Aware! : Done with the foreknowledge or forewarning that there is implied
+                    <h4 className="text-danger text-center">Be Aware! : Done with the foreknowledge or forewarning that
+                        there is implied
                         risk or danger which one must accept as one's own responsibility.</h4>
                     {/*<p className={"text-danger text-center text--italic"}>*/}
                     {/*    [ Done with the foreknowledge or forewarning that there is implied*/}
@@ -110,12 +114,17 @@ const ForetellerCard = () => {
                                       value={coinName}
                                       onChange={handleCoinType}>
 
-                            <option value={JSON.stringify({name: "default", code: "default", image: "default"})}>
+                            <option value={JSON.stringify({name: "default", code: "default", image: "default", description: "default"})}>
                                 Select Your Coin
                             </option>
                             {cardData.map((data, idx) => (
                                 <option key={idx}
-                                        value={JSON.stringify({name: data.name, code: data.code, image: data.image})}>
+                                        value={JSON.stringify({
+                                            name: data.name,
+                                            code: data.code,
+                                            image: data.image,
+                                            description: data.description
+                                        })}>
                                     {data.name}
                                 </option>
                             ))}

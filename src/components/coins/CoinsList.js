@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import CurrencyDetailsService from "../../services/CurrencyDetailsService";
 import Modal from "react-bootstrap/Modal";
+import CommonAuthCheck from "../../services/CommonAuthCheck";
 
 function CoinsList(props) {
     const divBox = {
@@ -33,9 +34,7 @@ function CoinsList(props) {
     const handleDelete = async (id) => {
         await CurrencyDetailsService.deleteCurrencyById(id)
             .then(response => response.data)
-            .then((data) => {
-                console.log(data)
-            }).catch(error => {
+            .catch(error => {
                 console.log(error.message);
             });
     }
@@ -142,4 +141,4 @@ function CoinsList(props) {
     );
 }
 
-export default CoinsList;
+export default CommonAuthCheck(CoinsList);

@@ -37,14 +37,12 @@ const LoginRegister = () => {
         event.preventDefault();
 
         await UserService.login(username, password).then(response => {
-            console.log("password length: " + password.length);
             if (response.code === 200) {
                 if (response.message === "Unsuccessful") {
                     setResponseMessage(response.data);
                     setErrorTitle("Login Failed!");
                     handleShow();
                 } else {
-                    console.log(response.data);
                     window.location.href = "/";
                 }
             }
@@ -68,7 +66,6 @@ const LoginRegister = () => {
                         setErrorTitle("Registration Failed!");
                         handleShow();
                     } else {
-                        console.log(response.data);
                         window.location.href = "/login";
                     }
                 }, error => {

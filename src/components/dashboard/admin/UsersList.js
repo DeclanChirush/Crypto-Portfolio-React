@@ -18,10 +18,11 @@ function UsersList() {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                await UserService.getAllUsers().then(response => response.data).then((data) => {
-                    setUsers(data);
-                    console.log(data);
-                }).catch(error => console.log(error.message));
+                await UserService.getAllUsers()
+                    .then(response => response.data)
+                    .then((data) => {
+                        setUsers(data);
+                    }).catch(error => console.log(error.message));
 
             } catch (error) {
                 console.error(error);
@@ -35,7 +36,9 @@ function UsersList() {
         <div>
             <Navbar/>
             <div style={divBox}/>
-            <h2 className="text-center"><mark>All Registered User Details</mark></h2>
+            <h2 className="text-center">
+                <mark>All Registered User Details</mark>
+            </h2>
             <Container>
                 <div style={divSmallBox}/>
                 <Table striped bordered hover variant='dark'>

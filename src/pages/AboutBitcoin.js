@@ -26,6 +26,8 @@ const AboutBitcoin = () => {
                 {/*Foreteller Cards List*/}
                 {/*<ForetellerCard/>*/}
 
+                <div className={'pb--60'}/>
+
             </LayoutTwo>
         </Fragment>
     );

@@ -6,7 +6,7 @@ import fileDownload from "js-file-download";
 import ScoreMeter from "./ScoreMeter";
 
 
-const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, marketCapData}) => {
+const ForetellerDetail = ({title, coinImage, code, desciption, priceData, volumeData, marketCapData}) => {
 
     const [sentimentData, setSentimentData] = useState([]);
 
@@ -16,7 +16,6 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                 .then(response => response.data)
                 .then((data) => {
                     setSentimentData(data);
-                    console.log(data)
                 })
                 .catch(error => console.log(error.message));
         }
@@ -51,8 +50,10 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
 
                     <div className="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div className="dg__software__inner">
+                            {/* COIN NAME */}
                             <h1 className='text-center'>{title}</h1>
 
+                            {/* COIN IMAGE */}
                             <div className='py-4'>
                                 <Image src={coinImage}
                                        className='mx-auto d-block'
@@ -62,6 +63,7 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                             </div>
 
                             <Row>
+                                {/* COIN DATA TABLE */}
                                 <Col className='pt-3 text-left col-9'>
                                     <Row>
                                         <Col>
@@ -136,6 +138,8 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                                         </Col>
                                     </Row>
                                 </Col>
+
+                                {/* SENTIMENT DATA */}
                                 <Col className=' col-3'>
                                     <div style={{paddingTop: '0.5em'}}>
                                         {sentimentData ? (
@@ -194,6 +198,25 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                         </div>
                     </div>
 
+                    {/* COIN DESCRIPTION */}
+                    <div className="col-lg-9 col-md-9 col-sm-9 col-9 pt--30">
+                        <div>
+                            <p>{desciption}</p>
+                        </div>
+                    </div>
+
+                    {/* HISTORY DATA DOWNLOAD */}
+                    <div className="col-lg-3 col-md-3 col-sm-3 col-3 pt--30">
+                        <div style={parentDiv}>
+                            <h3 className={'text-uppercase'}>History Data</h3>
+                        </div>
+
+                        <div style={parentDiv}>
+                            <button onClick={handleDownload} className="btn btn-success">Download</button>
+                        </div>
+                    </div>
+
+                    {/* SCORE METERS */}
                     <div>
                         <ScoreMeter
                             priceScore={priceData.score}
@@ -203,13 +226,13 @@ const ForetellerDetail = ({title, coinImage, code, priceData, volumeData, market
                     </div>
                 </div>
 
-                <div style={parentDiv} className={'pt--40'}>
-                    <h3 className={'text-uppercase'}>History Data</h3>
-                </div>
+                {/*<div style={parentDiv} className={'pt--40'}>*/}
+                {/*    <h3 className={'text-uppercase'}>History Data</h3>*/}
+                {/*</div>*/}
 
-                <div style={parentDiv}>
-                    <button onClick={handleDownload} className="btn btn-success">Download</button>
-                </div>
+                {/*<div style={parentDiv}>*/}
+                {/*    <button onClick={handleDownload} className="btn btn-success">Download</button>*/}
+                {/*</div>*/}
             </div>
         </div>
     );

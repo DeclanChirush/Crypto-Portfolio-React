@@ -39,9 +39,7 @@ function NewsList(props) {
     const handleDelete = async (id) => {
         await NewsService.deleteNewsById(id)
             .then(response => response.data)
-            .then((data) => {
-                console.log(data)
-            }).catch(error => {
+            .catch(error => {
                 console.log(error.message);
             });
     }
