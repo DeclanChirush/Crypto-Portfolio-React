@@ -123,7 +123,7 @@ function NewsList(props) {
                                     <td>{news.title}</td>
                                     <td>{news.description}</td>
                                     <td>{news.date.$date}</td>
-                                    <td>{news.image}</td>
+                                    <td>{(news.image).substring(0,30)}...</td>
                                     <td><Link to={{
                                         pathname: process.env.PUBLIC_URL + '/edit-news',
                                         state: {
@@ -134,10 +134,10 @@ function NewsList(props) {
                                             newsAuthor: news.author
                                         }
                                     }}
-                                              className={'btn btn-primary'}>Edit</Link>
+                                              className={'btn text-white btn-primary'}>Edit</Link>
                                     </td>
                                     <td>
-                                        <Link onClick={()=> handleShow(news._id.$oid)}    className={'btn btn-danger'}>Delete</Link>
+                                        <Link onClick={()=> handleShow(news._id.$oid)}    className={'btn text-white btn-danger'}>Delete</Link>
                                     </td>
                                 </tr>
                             ))

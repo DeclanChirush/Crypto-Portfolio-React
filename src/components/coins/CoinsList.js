@@ -114,7 +114,7 @@ function CoinsList(props) {
                                     <td>{coin.name}</td>
                                     <td>{coin.code}</td>
                                     <td>{coin.description}</td>
-                                    <td>{coin.image}</td>
+                                    <td>{(coin.image).substring(0,30)}...</td>
                                     <td>
                                         <Link to={{
                                             pathname: process.env.PUBLIC_URL + '/coin-edit',
@@ -126,10 +126,10 @@ function CoinsList(props) {
                                                 coinImagePath: coin.image
                                             }
                                         }}
-                                              className={'btn btn-primary'}>Edit</Link>
+                                              className={'btn btn-primary text-white'}>Edit</Link>
                                     </td>
                                     <td>
-                                        <Link onClick={()=> handleShow(coin._id.$oid)} className={'btn btn-danger'}>Delete</Link>
+                                        <Link onClick={()=> handleShow(coin._id.$oid)} className={'btn btn-danger text-white'}>Delete</Link>
                                     </td>
                                 </tr>
                             ))
